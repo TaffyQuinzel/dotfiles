@@ -9,12 +9,12 @@ sudo pacman -Syu
 #update aur programs
 cower -uvd
 if [ "$(ls -A $DIR)" ]; then
-	for dir in $DIR*
-	do
-		(cd $dir && makepkg -si && rm -Rf $dir)
-	done
+    for dir in $DIR*
+    do
+	(cd $dir && makepkg -si && rm -Rf $dir)
+    done
 else
-	echo 'AUR programs up to date'
+    echo 'AUR programs up to date'
 fi
 
 sudo etckeeper post-install
