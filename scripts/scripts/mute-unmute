@@ -1,0 +1,19 @@
+#!/bin/bash
+AMASTER=`amixer get Master | awk 'END{gsub(/\[|\]|%/,""); print $6}'`
+#VOL=`cat /tmp/vol`
+if [[ "$AMASTER" == "off" ]]; then
+	amixer set Master on
+	amixer set Headphone on
+	amixer set Speaker+LO on
+else
+	amixer set Master off
+	amixer set Headphone off
+	amixer set Speaker+LO off
+fi
+#amixer set Speaker+LO toggle
+#if [[ $AMASTER == 0 ]]; then
+	#amixer set Master $VOL
+#else
+	#echo "$AMASTER" > /tmp/vol
+	#amixer set Master 0
+#fi

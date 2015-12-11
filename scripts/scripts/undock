@@ -1,0 +1,4 @@
+#!/bin/bash
+xrandr --output HDMI3 --off &&
+xrandr --output eDP1 --auto &&
+xrandr --output HDMI2 --off
