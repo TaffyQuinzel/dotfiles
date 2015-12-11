@@ -1,0 +1,8 @@
+#!/bin/bash
+
+#for every map here do:
+for dir in *
+do
+	( stow -t ~/ $dir )
+	#echo 'hallo' $dir
+done
