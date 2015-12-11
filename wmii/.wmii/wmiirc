@@ -86,7 +86,7 @@ done &
 # wifi
 echo $WMII_NORMCOLORS wifi | wmiir create /rbar/wifi
 wifi() {
-    ~/.wmii/panel/panel_wifi
+    ~/.wmii/panel/wifi
 }
 while wifi | wmiir write /rbar/wifi; do
    sleep 5
@@ -95,7 +95,7 @@ done &
 # Volume
 echo $WMII_NORMCOLORS vol | wmiir create /rbar/vol
 vol() {
-    ~/.wmii/panel/panel_volume
+    ~/.wmii/panel/volume
 }
 vol | wmiir write /rbar/vol
 
@@ -103,7 +103,7 @@ vol | wmiir write /rbar/vol
 if [ -f /sys/class/power/BAT0 ] then
    echo $WMII_NORMCOLORS battery | wmiir create /rbar/battery        # Create the widget
    battery() {
-       ~/.wmii/panel/panel_battery
+       ~/.wmii/panel/battery
    }
    while battery | wmiir write /rbar/battery; do
        sleep 5
