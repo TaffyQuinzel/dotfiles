@@ -1,10 +1,15 @@
-fish_history
 %*%
 
-#vim tmp files
+#fish related
+fish_history
+fishd.*
+fish/.config/fish/plugins
+fish/.config/fish/themes
+
+#vim tmp 
 *~
 
-#emacs related files
+#emacs related 
 \#*#
 emacs/.emacs.d/ac-comphist.dat
 emacs/.emacs.d/autosaves
