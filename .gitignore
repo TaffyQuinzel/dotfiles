@@ -1,7 +1,11 @@
 fish_history
-*~
-\#*#
 %*%
+
+#vim tmp files
+*~
+
+#emacs related files
+\#*#
 emacs/.emacs.d/ac-comphist.dat
 emacs/.emacs.d/autosaves
 emacs/.emacs.d/auto-save-list
@@ -9,3 +13,8 @@ emacs/.emacs.d/backups
 emacs/.emacs.d/elpa/archives
 emacs/.emacs.d/tramp
 emacs/.emacs.d/url
+
+#mutt related
+accountrc_*
+mutt/.mutt/cache
+mutt/.mutt/*cache
