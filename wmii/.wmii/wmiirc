@@ -52,18 +52,23 @@ wmiir write /colrules <<!
 # Tagging Rules
 wmiir write /tagrules <<!
 /mpv.*/ -> ~
+/Tint2.*/ -> ~+1
 /Firefox.*/ -> +2
 !
 
 # Status Bar Info
 status() {
-    if [ `mpc status | grep playing | wc -l` -eq 1 ]; then
-	echo '>' `mpc status | head -n 1`
+    if [ -f /sys/class/power/BAT0 ]; then
+	~/.wmii/panel/battery
     else
-	if [ `mpc status | grep paused | wc -l` -eq 1 ]; then
-	    echo '||' `mpc status | head -n 1`
+	if [ `mpc status | grep playing | wc -l` -eq 1 ]; then
+	    echo '>' `mpc status | head -n 1`
 	else
-	    echo mpd
+	    if [ `mpc status | grep paused | wc -l` -eq 1 ]; then
+		echo '||' `mpc status | head -n 1`
+	    else
+		echo mpd
+	    fi
 	fi
     fi
 }
@@ -100,15 +105,15 @@ vol() {
 vol | wmiir write /rbar/vol
 
 # Battery
-if [ -f /sys/class/power/BAT0 ] ; then
-    echo $WMII_NORMCOLORS battery | wmiir create /rbar/battery        # Create the widget
-    battery() {
-	~/.wmii/panel/battery
-    }
-    while battery | wmiir write /rbar/battery; do
-	sleep 5
-    done &
-fi
+# if [ -f /sys/class/power/BAT0 ] ; then
+#     echo $WMII_NORMCOLORS battery | wmiir create /rbar/battery        # Create the widget
+#     battery() {
+# 	~/.wmii/panel/battery
+#     }
+#     while battery | wmiir write /rbar/battery; do
+# 	sleep 5
+#     done &
+# fi
 
 
 local_events() { true;}
