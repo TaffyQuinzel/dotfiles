@@ -1,7 +1,11 @@
 fish_history
 *~
-auto-save-list/
 #*#
 %*%
+emacs/.emacs.d/ac-comphist.dat
+emacs/.emacs.d/autosaves
+emacs/.emacs.d/auto-save-list
+emacs/.emacs.d/backups
 emacs/.emacs.d/elpa/archives
 emacs/.emacs.d/tramp
+emacs/.emacs.d/url
