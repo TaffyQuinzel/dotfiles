@@ -100,14 +100,14 @@ vol() {
 vol | wmiir write /rbar/vol
 
 # Battery
-if [ -f /sys/class/power/BAT0 ] then
-   echo $WMII_NORMCOLORS battery | wmiir create /rbar/battery        # Create the widget
-   battery() {
-       ~/.wmii/panel/battery
-   }
-   while battery | wmiir write /rbar/battery; do
-       sleep 5
-   done &
+if [ -f /sys/class/power/BAT0 ] ; then
+    echo $WMII_NORMCOLORS battery | wmiir create /rbar/battery        # Create the widget
+    battery() {
+	~/.wmii/panel/battery
+    }
+    while battery | wmiir write /rbar/battery; do
+	sleep 5
+    done &
 fi
 
 
