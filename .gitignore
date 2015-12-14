@@ -6,6 +6,9 @@ fishd.*
 fish/.config/fish/plugins
 fish/.config/fish/themes
 
+#ranger related
+__*__
+
 #vim tmp 
 *~
 
