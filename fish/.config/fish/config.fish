@@ -34,7 +34,7 @@ alias searchs='~/scripts/search-repos'
 alias paclear='sudo pacman -Sc'
 alias svim='sudo vim'
 alias logout='exit'
-alias mount='sudo mount -o uid=taffy,gid=taffy,fmask=113,dmask=002'
+alias mount="sudo mount -o uid=$USER,gid=(groups | awk '{ print $1 }'),fmask=113,dmask=002"
 alias umount='sudo umount'
 
 #make the shell follow the path of ranger
