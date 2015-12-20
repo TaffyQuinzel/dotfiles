@@ -4,7 +4,7 @@ if status --is-login
     set -xg PANEL_FIFO /tmp/panel-fifo
     set -xg XDG_DATA_HOME $HOME/.data
     set -xg MOZ_PLUGIN_PATH /usr/lib/mozilla/plugins
-    set -xg MAIL /var/spool/mail/taffy
+    set -xg MAIL /var/spool/mail/$USER
     #set PATH $PATH /usr/local/sbin /usr/local/bin /usr/bin /usr/lib/jvm/default/bin /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl $HOME/.config/bspwm/panel $HOME/.config/bar
     set PATH $PATH /usr/local/sbin /usr/local/bin /usr/bin /usr/lib/jvm/default/bin /usr/bin/site_perl /usr/bin/vendor_perl /usr/bin/core_perl $HOME/.config/bar
     set -xg PANEL_HEIGHT 24
