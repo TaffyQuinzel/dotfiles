@@ -57,7 +57,8 @@ wmiir write /tagrules <<!
 !
 
 # Status Bar Info
-status() {
+echo $WMII_NORMCOLORS battery_mpd | wmiir create /rbar/battery_mpd
+battery_mpd() {
     if [ -f /sys/class/power/BAT0 ]; then
 	~/.wmii/panel/battery
     else
@@ -72,6 +73,9 @@ status() {
 	fi
     fi
 }
+while battery_mpd | wmiir write /rbar/battery_mpd; do
+   sleep 1
+done &
 # tint2 space placeholder
 echo $WMII_NORMCOLORS tint | wmiir create /rbar/ztint        # Create the widget
 tint() {
@@ -333,7 +337,7 @@ wmiir xwrite /ctl bar on top
 
 # Misc
 progsfile="$(wmiir namespace)/.proglist"
-action status &
+# action status &
 wi_proglist $PATH >$progsfile &
 tint2 &
 emacs &
