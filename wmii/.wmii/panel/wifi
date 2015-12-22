@@ -1,13 +1,10 @@
 #!/bin/bash
 
 DEVICE=$(ip link |grep 'wlp*' | awk '{gsub(/[:/"/]/," "); print $2}')
-
 QUAL=$(iwconfig $DEVICE | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $3}')
 MAX=$(iwconfig $DEVICE | grep 'Link Quality=' | awk '{gsub(/[=/]/," "); print $4}')
 PERC=$(echo $QUAL*100/$MAX |bc)
 
-name=$(iwconfig $DEVICE | grep 'ESSID' |  awk '{gsub(/[:/"/]/," "); print $5}')
+NAME=$(iwconfig $DEVICE | grep 'ESSID' |  awk '{gsub(/[:/"/]/," "); print $5}')
 
-icon=""
-
-echo "$name: $PERC"
+echo "$NAME: $PERC"
