@@ -64,3 +64,6 @@ bind index B bounce-message
 # view html
 set mailcap_path 	= ~/.mutt/mailcap
 auto_view text/html
+
+macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
+macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
