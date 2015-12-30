@@ -18,8 +18,8 @@ set sort_aux=reverse-last-date-received
 set sort_browser=reverse-date
 set sort=threads
 
-# trash now working
-# unset confirmappend
+# disable asking to delete when moving messages
+unset confirmappend
 
 # Palette for use with the Linux console.  Black background.
 color hdrdefault blue default
@@ -38,18 +38,10 @@ color tilde brightmagenta default
 color index blue default ~F
 color index red default "~N|~O"
 
-# color body brightwhite black '\*+[^*]+\*+'
-# color body brightwhite black '_+[^_]+_+'
-
 #sidebar stuff
 set sidebar_width=30
-
-#Visible at first, then change its value to yes
 set sidebar_visible=yes
-
-# set sidebar_folderindent=yes
 color sidebar_new yellow default
-
 set sidebar_delim='|'
 set sidebar_sort=yes
 
@@ -64,6 +56,5 @@ bind index B bounce-message
 # view html
 set mailcap_path 	= ~/.mutt/mailcap
 auto_view text/html
-
 macro index,pager \cb "<pipe-message> urlscan<Enter>" "call urlscan to extract URLs out of a message"
 macro attach,compose \cb "<pipe-entry> urlscan<Enter>" "call urlscan to extract URLs out of a message"
