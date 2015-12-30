@@ -1,9 +1,19 @@
 set editor="emacs %s"
 set my_name="Louis van der Burg"
 
-source ~/.mutt/accounts/louisburg
+folder-hook 'louisBurg' 'source ~/.mutt/accounts/louisBurg'
+folder-hook 'taffyQuinzel' 'source ~/.mutt/accounts/taffyQuinzel'
+folder-hook 'burglfvd' 'source ~/.mutt/accounts/burglfvd'
 
 #main mail folder
+# set folder=~/.mail/
+# source ~/.mutt/mailboxes2
+source ~/.mutt/accounts/louisBurg
+
+macro index <F1> '<sync-mailbox><enter-command>source ~/.mutt/accounts/louisBurg<enter><change-folder>!<enter>'
+macro index <F2> '<sync-mailbox><enter-command>source ~/.mutt/accounts/taffyQuinzel<enter><change-folder>!<enter>'
+macro index <F3> '<sync-mailbox><enter-command>source ~/.mutt/accounts/burglfvd<enter><change-folder>!<enter>'
+
 
 # Set up preview pane for messages
 set pager_index_lines 	= 10 	# number of index lines to show
@@ -29,7 +39,6 @@ color attachment red default
 color message brightred default
 color error brightred default
 color indicator black red
-color status brightgreen blue
 color tree white default
 color normal white default
 color markers red default
@@ -43,7 +52,6 @@ set sidebar_width=30
 set sidebar_visible=yes
 color sidebar_new yellow default
 set sidebar_delim='|'
-set sidebar_sort=yes
 
 # bindings for sidebar
 bind index,pager <up> sidebar-prev
