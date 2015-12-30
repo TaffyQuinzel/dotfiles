@@ -1,7 +1,7 @@
 set editor="emacs %s"
 set my_name="Louis van der Burg"
 
-source ~/.mutt/accountrc_louisburg
+source ~/.mutt/accounts/louisburg
 
 #main mail folder
 
