@@ -59,7 +59,7 @@ wmiir write /tagrules <<!
 # Status Bar Info
 echo $WMII_NORMCOLORS battery_mpd | wmiir create /rbar/battery_mpd
 battery_mpd() {
-    if [ -f /sys/class/power/BAT0 ]; then
+    if [ -d /sys/class/power_supply/BAT0 ]; then
 	~/.wmii/panel/battery
     else
 	if [ `mpc status | grep playing | wc -l` -eq 1 ]; then
