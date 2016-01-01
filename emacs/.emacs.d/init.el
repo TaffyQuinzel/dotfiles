@@ -58,6 +58,7 @@
 
 ;; enable bracket pairs
 (show-paren-mode 1)
+
 ;; display line numbers
 (require 'relative-linum)
 (global-linum-mode t)
@@ -79,10 +80,6 @@
 	(evil   . (telephone-line-airline-position-segment))))
 (telephone-line-mode 1)
 
-
-;; set color theme
-;; (require 'color-theme)
-
 ;; set indent guide
 (require 'indent-guide)
 (indent-guide-global-mode)
@@ -100,6 +97,8 @@
 (add-to-list 'auto-mode-alist '("\\.fs[iylx]?$" . fsharp-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.fish\\'" . fish-mode))
+(add-to-list 'auto-mode-alist '("\\.mc\\'" . text-mode))
+(add-to-list 'auto-mode-alist '("\\rc\\'" . conf-mode))
 
 ;; auto indent for fish files on save
 (add-hook 'fish-mode-hook (lambda ()
