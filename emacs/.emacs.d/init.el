@@ -128,3 +128,24 @@
 	       (file-writable-p buffer-file-name))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
+;; automatically refresh buffer when changed on disk
+(global-auto-revert-mode t)
+
+;; tabs are spaces
+(setq-default indent-tabs-mode nil)
+
+;; show only endlines
+(require 'whitespace)
+(setq whitespace-display-mappings '((newline-mark ?\n    [?⏎ ?\n])))
+(setq whitespace-style '(face newline-mark) )
+(global-whitespace-mode t)
+
+;; cleanup whitespaces on save
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; slime stuff
+(setq inferior-lisp-program "/bin/sbcl")
+
+;; save minibuffer history 
+(setq savehist-file "~/.emacs.d/savehist") 
+(savehist-mode t)
