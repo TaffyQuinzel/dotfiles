@@ -1,0 +1,25 @@
+color status brightgreen blue
+#SMTP
+set smtp_authenticators="login"
+set ssl_starttls=yes
+set ssl_use_sslv3=yes
+set timeout=15
+
+set smtp_url="smtp://louis.burg@hotmail.com@smtp-mail.outlook.com:587"
+set smtp_pass=$my_pw_louisBurg
+set ssl_force_tls=yes
+set from="louis.burg@hotmail.com"
+set realname="Louis van der Burg"
+
+#folders
+set mbox_type=Maildir
+set folder=~/.mail/louisBurg
+set header_cache=~/.mutt/headercache
+set message_cachedir=~/.mutt/messagecache
+set spoolfile = "+/Inbox"
+set record = "+/Sent"
+set postponed = "+/Drafts"
+folder-hook . set trash="+/Deleted"
+folder-hook trash$ unset trash
+# unmailboxes *
+source ~/.mutt/mailboxes/louisBurg

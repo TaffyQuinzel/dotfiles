@@ -1,6 +1,9 @@
 set editor="emacs %s"
 set my_name="Louis van der Burg"
 
+# use gpg for passwords
+source "gpg2 -dq $HOME/.mutt/my-pwds.gpg |"
+
 folder-hook 'louisBurg' 'source ~/.mutt/accounts/louisBurg'
 folder-hook 'taffyQuinzel' 'source ~/.mutt/accounts/taffyQuinzel'
 folder-hook 'burglfvd' 'source ~/.mutt/accounts/burglfvd'
