@@ -149,3 +149,6 @@
 ;; save minibuffer history 
 (setq savehist-file "~/.emacs.d/savehist") 
 (savehist-mode t)
+
+;; bind Q to quit buffer without save
+;; (define-key evil-normal-state-map (kbd "Q") '(let (kill-buffer-query-functions) (kill-buffer)))
