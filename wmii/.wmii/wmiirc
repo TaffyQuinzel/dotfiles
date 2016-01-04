@@ -47,9 +47,13 @@ wmiir write /tagrules <<!
 if [ -d /sys/class/power_supply/BAT0 ]; then
     $BATTERY_MPD = ~/.wmii/panel/battery
     $VOLUME = ~/.wmii/panel/volume2
+    $VOL_MAIN = Master
+    $VOL_CONTROL = Master
 else
     $BATTERY_MPD = ~/.wmii/panel/mpd
     $VOLUME = ~/.wmii/panel/volume
+    $VOL_MAIN = IE958
+    $VOL_CONTROL = PCM
 fi
 
 # Status Bar Info
@@ -256,13 +260,13 @@ Key $MODKEY-Control-y # Toggle all other key bindings
 
 KeyGroup Volume actions
 Key XF86AudioMute
-        amixer sset IEC958 toggle
+        amixer sset $VOL_MAIN toggle
         vol | wmiir write /rbar/vol
 Key XF86AudioLowerVolume
-        amixer sset PCM 2-
+        amixer sset $VOL_CONTROL 2-
         vol | wmiir write /rbar/vol
 Key XF86AudioRaiseVolume
-        amixer sset PCM 2+
+        amixer sset $VOL_CONTROL 2+
         vol | wmiir write /rbar/vol
 
 KeyGroup Media actions
