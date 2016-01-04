@@ -321,6 +321,8 @@ emacs &
 firefox &
 megasync &
 terminology &
+terminology -e mutt &
+terminology -e rangercd &
 
 # Setup Tag Bar
 IFS="$wi_newline"
