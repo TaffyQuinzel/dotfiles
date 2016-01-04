@@ -45,21 +45,21 @@ wmiir write /tagrules <<!
 
 #check on which machine you are
 if [ -d /sys/class/power_supply/BAT0 ]; then
-    $BATTERY_MPD = ~/.wmii/panel/battery
-    $VOLUME = ~/.wmii/panel/volume2
-    $VOL_MAIN = Master
-    $VOL_CONTROL = Master
+    BATTERY_MPD=$( ~/.wmii/panel/battery )
+    VOLUME=$( ~/.wmii/panel/volume2 )
+    VOL_MAIN=Master
+    VOL_CONTROL=Master
 else
-    $BATTERY_MPD = ~/.wmii/panel/mpd
-    $VOLUME = ~/.wmii/panel/volume
-    $VOL_MAIN = IE958
-    $VOL_CONTROL = PCM
+    BATTERY_MPD=$( ~/.wmii/panel/mpd )
+    VOLUME=$( ~/.wmii/panel/volume )
+    VOL_MAIN=IE958
+    VOL_CONTROL=PCM
 fi
 
 # Status Bar Info
 echo $WMII_NORMCOLORS battery_mpd | wmiir create /rbar/battery_mpd
 battery_mpd() {
-    $BATTERY_MPD
+    echo $BATTERY_MPD
 }
 while battery_mpd | wmiir write /rbar/battery_mpd; do
    sleep 1
@@ -92,8 +92,7 @@ done &
 # Volume
 echo $WMII_NORMCOLORS vol | wmiir create /rbar/vol
 vol() {
-    # ~/.wmii/panel/volume
-    $VOLUME
+    echo $VOLUME
 }
 vol | wmiir write /rbar/vol
 
