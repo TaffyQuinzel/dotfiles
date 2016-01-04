@@ -43,22 +43,19 @@ wmiir write /tagrules <<!
 /Firefox.*/ -> +2
 !
 
+#check on which machine you are
+if [ -d /sys/class/power_supply/BAT0 ]; then
+    $BATTERY_MPD = ~/.wmii/panel/battery
+    $VOLUME = ~/.wmii/panel/volume2
+else
+    $BATTERY_MPD = ~/.wmii/panel/mpd
+    $VOLUME = ~/.wmii/panel/volume
+fi
+
 # Status Bar Info
 echo $WMII_NORMCOLORS battery_mpd | wmiir create /rbar/battery_mpd
 battery_mpd() {
-    if [ -d /sys/class/power_supply/BAT0 ]; then
-	~/.wmii/panel/battery
-    else
-	if [ `mpc status | grep playing | wc -l` -eq 1 ]; then
-	    echo '>' `mpc status | head -n 1`
-	else
-	    if [ `mpc status | grep paused | wc -l` -eq 1 ]; then
-		echo '||' `mpc status | head -n 1`
-	    else
-		echo mpd
-	    fi
-	fi
-    fi
+    $BATTERY_MPD
 }
 while battery_mpd | wmiir write /rbar/battery_mpd; do
    sleep 1
@@ -91,20 +88,10 @@ done &
 # Volume
 echo $WMII_NORMCOLORS vol | wmiir create /rbar/vol
 vol() {
-    ~/.wmii/panel/volume
+    # ~/.wmii/panel/volume
+    $VOLUME
 }
 vol | wmiir write /rbar/vol
-
-# Battery
-# if [ -f /sys/class/power/BAT0 ] ; then
-#     echo $WMII_NORMCOLORS battery | wmiir create /rbar/battery        # Create the widget
-#     battery() {
-# 	~/.wmii/panel/battery
-#     }
-#     while battery | wmiir write /rbar/battery; do
-# 	sleep 5
-#     done &
-# fi
 
 
 local_events() { true;}
