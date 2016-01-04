@@ -1,5 +1,4 @@
 #!/bin/bash
-source $(dirname $0)/config
 
 BAT=`acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g'`
 STATUS=`acpi -b | awk '{gsub(/,/,""); print $3}'`
