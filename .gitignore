@@ -24,9 +24,13 @@ emacs/.emacs.d/backups
 emacs/.emacs.d/elpa/archives
 emacs/.emacs.d/tramp
 emacs/.emacs.d/url
+emacs/.emacs.d/savehist
 
 #mutt related
 accountrc_*
 mutt/.mutt/cache
 mutt/.mutt/*cache
 *.gpg
+
+#ncmpcpp related
+error.log
