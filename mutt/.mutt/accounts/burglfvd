@@ -1,1 +1,24 @@
-pass = $my_pw_burglfvd
+color status blue yellow
+#SMTP
+unset smtp_authenticators
+unset ssl_starttls
+unset ssl_use_sslv3
+set timeout=15
+
+set smtp_url="smtps://burglfvd:$my_pw_burglfvd@smtp.gmail.com"
+set ssl_force_tls=yes
+set from="burglfvd@gmail.com"
+set realname="Louis van der Burg"
+
+#folders
+set mbox_type=Maildir
+set folder=~/.mail/burglfvd
+set header_cache=~/.mutt/headercache
+set message_cachedir=~/.mutt/messagecache
+set spoolfile = "+/INBOX"
+set record = "+/[Gmail].Verzonden berichten"
+set postponed = "+/[Gmail].Concepten"
+folder-hook . set trash="+/Trash"
+folder-hook trash$ unset trash
+# unmailboxes *
+source ~/.mutt/mailboxes/burglfvd
