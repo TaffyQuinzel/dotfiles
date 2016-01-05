@@ -19,6 +19,7 @@ set message_cachedir=~/.mutt/messagecache
 set spoolfile = "+/Inbox"
 set record = "+/Sent"
 set postponed = "+/Drafts"
+unset trash
 folder-hook . set trash="+/Deleted"
 folder-hook trash$ unset trash
 # unmailboxes *

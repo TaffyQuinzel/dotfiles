@@ -18,7 +18,8 @@ set message_cachedir=~/.mutt/messagecache
 set spoolfile = "+/INBOX"
 set record = "+/[Gmail].Verzonden berichten"
 set postponed = "+/[Gmail].Concepten"
-folder-hook . set trash="+/Trash"
+unset trash
+folder-hook . set trash="+/[Gmail].Prullenbak"
 folder-hook trash$ unset trash
 # unmailboxes *
 source ~/.mutt/mailboxes/burglfvd
