@@ -29,3 +29,4 @@ emacs/.emacs.d/url
 accountrc_*
 mutt/.mutt/cache
 mutt/.mutt/*cache
+*.gpg
