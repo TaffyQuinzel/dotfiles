@@ -1,20 +1,24 @@
 #!/bin/bash
-DIR="$HOME/aurbuilds/"
 
-#backup etc files to git
-sudo etckeeper pre-install
-
-#update normal programs
-sudo pacman -Syu
-#update aur programs
-cower -uvd
-if [ "$(ls -A $DIR)" ]; then
-    for dir in $DIR*
-    do
-	(cd $dir && makepkg -si && rm -Rf $dir)
-    done
-else
-    echo 'AUR programs up to date'
+if [ $( hostname ) = "genetic" ]; then
+    sudo emerge --update --deep --ask --newuse --with-bdeps=y @world
+    sudo emerge --depclean
+    sudo revdep-rebuild
+else   
+    DIR="$HOME/aurbuilds/"
+    #backup etc files to git
+    sudo etckeeper pre-install
+    #update normal programs
+    sudo pacman -Syu
+    #update aur programs
+    cower -uvd
+    if [ "$(ls -A $DIR)" ]; then
+        for dir in $DIR*
+        do
+            (cd $dir && makepkg -si && rm -Rf $dir)
+        done
+    else
+        echo 'AUR programs up to date'
+    fi
+    sudo etckeeper post-install
 fi
-
-sudo etckeeper post-install
