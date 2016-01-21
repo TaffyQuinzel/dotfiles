@@ -18,9 +18,10 @@ noticebar=/rbar/!notice
 # Colors tuples: "<text> <background> <border>"
 export WMII_NORMCOLORS='#000000 #c1c48b #81654f'
 export WMII_FOCUSCOLORS='#000000 #81654f #000000'
-
-export WMII_BACKGROUND='#333333'
-export WMII_FONT='-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
+# export WMII_BACKGROUND='#333333'
+export WMII_BACKGROUND='~/images/Sky-Clouds-Background-28.jpg'
+# export WMII_FONT='-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
+export WMII_FONT='xft: Source Code Pro-9'
 
 set -- $(echo $WMII_NORMCOLORS $WMII_FOCUSCOLORS)
 export WMII_TERM="terminology"
@@ -96,9 +97,12 @@ vol() {
 }
 vol | wmiir write /rbar/vol
 
+# Generic overridable startup details
+startup() { witray & }
 
 local_events() { true;}
 wi_runconf -s wmiirc_local
+startup
 
 echo $WMII_NORMCOLORS | wmiir create $noticebar
 
