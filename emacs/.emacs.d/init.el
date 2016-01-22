@@ -117,7 +117,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (set-face-attribute 'default nil
-		    :family "Source Code Pro for Powerline Regular"
+		    :family "Source Code Pro"
 		    :height 110
 		    :weight 'normal)
 
@@ -137,14 +137,14 @@
 ;; show only endlines
 (require 'whitespace)
 (setq whitespace-display-mappings '((newline-mark ?\n    [?⏎ ?\n])))
-(setq whitespace-style '(face newline-mark) )
+(setq whitespace-style '(face newline-mark))
 (global-whitespace-mode t)
 
 ;; cleanup whitespaces on save
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; slime stuff
-(setq inferior-lisp-program "/bin/sbcl")
+(setq inferior-lisp-program "/bin/clisp")
 
 ;; save minibuffer history 
 (setq savehist-file "~/.emacs.d/savehist") 
@@ -152,3 +152,8 @@
 
 ;; bind Q to quit buffer without save
 ;; (define-key evil-normal-state-map (kbd "Q") '(let (kill-buffer-query-functions) (kill-buffer)))
+
+;; ssh agent stuff
+(require 'exec-path-from-shell)
+(exec-path-from-shell-copy-env "SSH_AGENT_PID")
+(exec-path-from-shell-copy-env "SSH_AUTH_SOCK")
