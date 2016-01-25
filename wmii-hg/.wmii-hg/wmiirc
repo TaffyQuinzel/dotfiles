@@ -252,6 +252,30 @@ Key $MODKEY-Control-y # Toggle all other key bindings
 		wmiir xwrite /ctl grabmod Mod3;;
 	esac
 
+KeyGroup Volume actions
+Key XF86AudioMute
+        amixer sset $VOL_MAIN toggle
+        vol | wmiir write /rbar/vol
+Key XF86AudioLowerVolume
+        amixer sset $VOL_CONTROL 2-
+        vol | wmiir write /rbar/vol
+Key XF86AudioRaiseVolume
+        amixer sset $VOL_CONTROL 2+
+        vol | wmiir write /rbar/vol
+
+KeyGroup Media actions
+Key XF86AudioPlay
+        if [ $(mpc status | grep '\[' | awk '{gsub(/[\[\]/]/," "); print $1}') = "playing" ];then
+                mpc pause
+        else
+                mpc play
+        fi
+Key XF86AudioStop
+        mpc stop
+Key XF86AudioPrev
+        mpc prev
+Key XF86AudioNext
+
 KeyGroup Tag actions
 Key $MODKEY-p       # Change to another tag
 	wmiir xwrite /ctl view $(wi_tags | wimenu -h "${hist}.tags" -n 50) &
@@ -288,6 +312,10 @@ wmiir xwrite /ctl bar on top
 # Misc
 progsfile="$(wmiir namespace)/.proglist"
 wi_proglist $PATH >$progsfile &
+firefox &
+emacs &
+urxvtc -e mutt &
+urxvtc
 
 # Setup Tag Bar
 IFS="$wi_newline"
