@@ -1,0 +1,26 @@
+#!/bin/bash
+
+BAT=`acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g'`
+STATUS=`acpi -b | awk '{gsub(/,/,""); print $3}'`
+
+# Set Icon
+if [[ $BAT -lt 15 ]]; then
+    icon=""
+elif [[ $BAT -lt 40 ]]; then
+    icon=""
+elif [[ $BAT -lt 70 ]]; then
+    icon=""
+elif [[ $BAT -lt 90 ]]; then
+    icon=""
+else
+    icon=""
+fi
+
+# Create Bar
+if [[ $STATUS != "Discharging" ]]; then
+    # echo " $icon $BAT%"
+    echo "$BAT% ++"
+else
+    # echo "$icon $BAT%"
+    echo "$BAT% --"
+fi

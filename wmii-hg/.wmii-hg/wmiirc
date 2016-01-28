@@ -52,30 +52,44 @@ wmiir write /rules <<!
 
 #check on which machine you are
 if [ -d /sys/class/power_supply/BAT0 ]; then
-    BATTERY_MPD="~/.wmii/panel/battery"
-    VOLUME="~/.wmii/panel/volume2"
+    VOLUME="~/.wmii-hg/panel/volume2"
     VOL_MAIN=Master
     VOL_CONTROL=Master
 else
-    BATTERY_MPD="~/.wmii/panel/mpd"
-    VOLUME="~/.wmii/panel/volume"
+    VOLUME="~/.wmii-hg/panel/volume"
     VOL_MAIN=IE958
     VOL_CONTROL=PCM
 fi
 
 # Status Bar Info
-echo colors $WMII_NORMCOLORS | wmiir create /rbar/battery_mpd
-battery_mpd() {
-    echo -n label $(eval $BATTERY_MPD)
+# mpd
+echo colors $WMII_NORMCOLORS | wmiir create /rbar/ampd
+mpd() {
+    echo -n label $(~/.wmii-hg/panel/mpd)
 }
-while battery_mpd | wmiir write /rbar/battery_mpd; do
+while mpd | wmiir write /rbar/ampd; do
+   sleep 1
+done &
+
+# battery
+wmiir create /rbar/battery
+battery_colour() {
+    echo colors $WMII_NORMCOLORS | wmiir write /rbar/battery
+}
+while battery_colour | wmiir write /rbar/battery; do
+   sleep 0.5
+done &
+battery() {
+    echo -n label $(~/.wmii-hg/panel/battery)
+}
+while battery | wmiir write /rbar/battery; do
    sleep 1
 done &
 
 # wifi
 echo colors $WMII_NORMCOLORS | wmiir create /rbar/wifi
 wifi() {
-    echo -n label $(~/.wmii/panel/wifi)
+    echo -n label $(~/.wmii-hg/panel/wifi)
 }
 while wifi | wmiir write /rbar/wifi; do
    sleep 5
@@ -312,10 +326,10 @@ wmiir xwrite /ctl bar on top
 # Misc
 progsfile="$(wmiir namespace)/.proglist"
 wi_proglist $PATH >$progsfile &
-firefox &
-emacs &
-urxvtc -e mutt &
-urxvtc
+# firefox &
+# emacs &
+# urxvtc -e mutt &
+# urxvtc
 
 # Setup Tag Bar
 IFS="$wi_newline"

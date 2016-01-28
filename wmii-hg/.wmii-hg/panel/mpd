@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ `mpc status | grep playing | wc -l` -eq 1 ]; then
+    echo '>' `mpc status | head -n 1`
+else
+    if [ `mpc status | grep paused | wc -l` -eq 1 ]; then
+        echo '||' `mpc status | head -n 1`
+    else
+        echo mpd
+    fi
+fi
