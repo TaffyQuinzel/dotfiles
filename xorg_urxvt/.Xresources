@@ -1,6 +1,5 @@
 URxvt.saveLines:32767
 URxvt.font: xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=13:antialias=true:hinting=true
-!URxvt*font: xft:Sauce Code Powerline:size=11,xft:FontAwesome:size=11
 URxvt.scrollbar: false
 URxvt.cursorBlink: true
 URxvt*buffered: false
@@ -10,49 +9,6 @@ URxvt*buffered: false
 !Xft.rgba: rbg
 !Xft.hinting: true
 !Xft.hintstyle: hintfull
-
-! Base16 Atelier Seaside
-! Scheme: Bram de Haan (http://atelierbram.github.io/syntax-highlighting/atelier-schemes/seaside/)
-
-!#define base00 #131513
-!#define base01 #242924
-!#define base02 #5e6e5e
-!#define base03 #687d68
-!#define base04 #809980
-!#define base05 #8ca68c
-!#define base06 #cfe8cf
-!#define base07 #f0fff0
-!#define base08 #e6193c
-!#define base09 #87711d
-!#define base0A #c3c322
-!#define base0B #29a329
-!#define base0C #1999b3
-!#define base0D #3d62f5
-!#define base0E #ad2bee
-!#define base0F #e619c3
-
-!URxvt*foreground: base05
-!URxvt*background: base00
-!URxvt*cursorColor: base05
-
-!URxvt*color0: base00
-!URxvt*color1: base08
-!URxvt*color2: base0B
-!URxvt*color3: base0A
-!URxvt*color4: base0D
-!URxvt*color5: base0E
-!URxvt*color6: base0C
-!URxvt*color7: base05
-
-!URxvt*color8: base03
-!URxvt*color9: base09
-!URxvt*color10: base01
-!URxvt*color11: base02
-!URxvt*color12: base04
-!URxvt*color13: base06
-!URxvt*color14: base0F
-!URxvt*color15: base07
-
 
 URxvt*cursorColor:   #cee318
 
