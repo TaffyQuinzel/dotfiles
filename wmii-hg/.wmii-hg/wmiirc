@@ -49,7 +49,7 @@ wmiir write /rules <<!
     /:mutt/ tags=mutt
     /:Firefox/ tags=web
     /:Emacs/ tags=emacs
-    /:ncmcpp/ tags=ncmcpp
+    /:ncmpcpp/ tags=ncmpcpp
 !
 
 #check on which machine you are
