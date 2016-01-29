@@ -1,0 +1,9 @@
+#!/bin/bash
+
+firefox &
+emacs &
+urxvtc -e mutt &
+urxvtc &
+if [[ $(hostname) = 'satoru' ]]; then
+   urxvtc -e ncmpcpp &
+fi

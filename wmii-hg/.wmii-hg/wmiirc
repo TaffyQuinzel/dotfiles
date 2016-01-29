@@ -41,7 +41,7 @@ wmiir write /rules <<!
     /^Pidgin:/ allow=+activate
 
     # MPlayer and VLC don't float by default, but should.
-    /MPlayer|VLC/ floating=on
+    /MPlayer|VLC|mpv/ floating=on
 
     # ROX puts all of its windows in the same group, so they open
     # with the same tags.  Disable grouping for ROX Filer.
@@ -49,6 +49,7 @@ wmiir write /rules <<!
     /:mutt/ tags=mutt
     /:Firefox/ tags=web
     /:Emacs/ tags=emacs
+    /:ncmcpp/ tags=ncmcpp
 !
 
 #check on which machine you are
@@ -330,10 +331,7 @@ wmiir xwrite /ctl bar on top
 # Misc
 progsfile="$(wmiir namespace)/.proglist"
 wi_proglist $PATH >$progsfile &
-firefox &
-emacs &
-urxvtc -e mutt &
-urxvtc &
+$(~/.wmii-hg/startuprogs) &
 
 # Setup Tag Bar
 IFS="$wi_newline"
