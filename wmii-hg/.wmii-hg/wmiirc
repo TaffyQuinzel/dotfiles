@@ -74,10 +74,12 @@ done &
 # battery
 wmiir create /rbar/battery
 battery_colour() {
-    echo colors $WMII_NORMCOLORS | wmiir write /rbar/battery
+    echo colors $(~/.wmii-hg/panel/battcol)
 }
 while battery_colour | wmiir write /rbar/battery; do
-   sleep 0.5
+    sleep 0.5
+    echo colors $WMII_NORMCOLORS | wmiir write /rbar/battery
+    sleep 0.5
 done &
 battery() {
     echo -n label $(~/.wmii-hg/panel/battery)

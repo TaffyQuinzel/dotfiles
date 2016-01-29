@@ -1,0 +1,16 @@
+#!/bin/bash
+
+BAT=`acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g'`
+STATUS=`acpi -b | awk '{gsub(/,/,""); print $3}'`
+
+
+if [[ $STATUS = "Discharging" ]]; then
+    if [[ $BAT -lt 20 ]]; then
+        echo "#1c1c1c #ff0000 #666666"
+    elif [[ $BAT -lt 40 ]]; then
+        echo "#1c1c1c #8f0000 #666666"
+    fi
+else
+    echo $WMII_NORMCOLORS
+fi
+
