@@ -46,8 +46,9 @@ wmiir write /rules <<!
     # ROX puts all of its windows in the same group, so they open
     # with the same tags.  Disable grouping for ROX Filer.
     /^ROX-Filer:/ group=0
-    /*.mutt/ -> +mutt
-    /*.firefox/ -> +web
+    /:mutt/ tags=mutt
+    /:Firefox/ tags=web
+    /:Emacs/ tags=emacs
 !
 
 #check on which machine you are
@@ -329,10 +330,10 @@ wmiir xwrite /ctl bar on top
 # Misc
 progsfile="$(wmiir namespace)/.proglist"
 wi_proglist $PATH >$progsfile &
-# firefox &
-# emacs &
-# urxvtc -e mutt &
-# urxvtc
+firefox &
+emacs &
+urxvtc -e mutt &
+urxvtc &
 
 # Setup Tag Bar
 IFS="$wi_newline"
