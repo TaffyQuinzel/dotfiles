@@ -27,7 +27,8 @@
 
 ;; set color theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
-(load-theme 'hopscotch t)
+;; (load-theme 'hopscotch t)
+(load-theme 'soleo t)
 
 (require 'evil-leader)
 (global-evil-leader-mode)
