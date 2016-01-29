@@ -8,7 +8,7 @@ if [[ $STATUS = "Discharging" ]]; then
 elif [[ $STATUS = "Charging" ]]; then
     echo "$BAT% ++"
 elif [[ $STATUS = "Full" ]]; then
-    echo "$BAT% =^.^="
+    echo "=^.^="
 else
     echo ">*_*<"
 fi
