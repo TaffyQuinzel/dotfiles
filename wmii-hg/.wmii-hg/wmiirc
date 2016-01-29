@@ -289,6 +289,7 @@ Key XF86AudioStop
 Key XF86AudioPrev
         mpc prev
 Key XF86AudioNext
+        mpc next
 
 KeyGroup Tag actions
 Key $MODKEY-p       # Change to another tag
