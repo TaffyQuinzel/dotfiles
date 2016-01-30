@@ -4,6 +4,7 @@ systemctl start --user emacs
 firefox &
 emacsclient -c &
 urxvtc -e mutt &
+ssh-add &
 urxvtc &
 if [[ $(hostname) = 'satoru' ]]; then
    urxvtc -e ncmpcpp &

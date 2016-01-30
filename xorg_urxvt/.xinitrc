@@ -23,6 +23,9 @@ fi
 export GPG_AGENT_INFO  # the env file does not contain the export statement
 export SSH_AUTH_SOCK   # enable gpg-agent for ssh
 
+# ssh agent askpass stuff
+export SSH_ASKPASS=ssh-askpass
+
 # mouse pointer
 xsetroot -cursor_name left_ptr&
 
