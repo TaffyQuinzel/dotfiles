@@ -26,6 +26,7 @@ alias update='~/scripts/update-system'
 alias svim='sudo vim'
 alias logout='exit'
 alias umount='sudo umount'
+alias emacs='emacsclient -c'
 #system specific
 if [ (hostname) = "genetic" ]
     alias install='sudo emerge --ask'
