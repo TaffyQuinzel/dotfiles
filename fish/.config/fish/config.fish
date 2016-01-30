@@ -8,8 +8,8 @@ if status --is-login
     set -xg XDG_CONFIG_HOME $HOME/.config
     set -xg XDG_CACHE_HOME $HOME/.cache
     set -xg _ /usr/bin/printenv
-    set -xg EDITOR emacs
-    set -xg VISUAL emacs
+    set -xg EDITOR emacsclient -c
+    set -xg VISUAL emacsclient -c
     set -xg BROWSER firefox
     set -xg JAVA_HOME /usr/lib/jvm/java-7-openjdk/jre
     set -xg CATALINA_HOME /opt/tomcat
