@@ -1,5 +1,6 @@
 #!/bin/bash
 
+systemctl start --user emacs
 firefox &
 emacsclient -c &
 urxvtc -e mutt &
