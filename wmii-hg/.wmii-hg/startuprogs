@@ -1,11 +1,18 @@
 #!/bin/bash
 
-systemctl start --user emacs
-firefox &
-emacsclient -c &
-urxvtc -e mutt &
-ssh-add &
-urxvtc &
+declare -A progs
+progs[firefox]='firefox'
+progs[emacsclient]='emacsclient -c'
+progs[mutt]='urxvtc -e mutt'
+progs[ssh-agent]='ssh-add'
+progs[urxvtc]='urxvtc'
+
 if [[ $(hostname) = 'satoru' ]]; then
-   urxvtc -e ncmpcpp &
+   progs[ncmpcpp]=('urxvtc -e ncmpcpp')
 fi
+
+for i in "${!progs[@]}"; do
+    if [ $(pgrep -cx $i) -lt 1 ] ; then
+        eval ${progs[$i]}
+    fi
+done
