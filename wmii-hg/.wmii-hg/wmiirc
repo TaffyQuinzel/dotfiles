@@ -48,7 +48,7 @@ wmiir write /rules <<!
     /^ROX-Filer:/ group=0
     /:mutt/ tags=mutt
     /:Firefox/ tags=web
-    /:Emacs/ tags=emacs
+    # /:Emacs/ tags=emacs
     /:ncmpcpp/ tags=ncmpcpp
     /:Transmission/ tags=torrent
 !
@@ -117,7 +117,7 @@ while clock | wmiir write /rbar/zclock; do
 done &
 
 # Generic overridable startup details
-startup() { witray & }
+startup() { witray -NW & }
 
 wi_runconf -s wmiirc_local
 startup
@@ -259,9 +259,8 @@ Key $MODKEY-y      # Open program menu
 
 Key $MODKEY-Return # Launch a terminal
 	eval wmiir setsid $WMII_TERM &
-# Key $MODKEY-Shift-Return # Launch a floating terminal
-# 	eval wmiir setsid $WMII_TERM &
-# 	wmiir xwrite /tag/sel/ctl send sel toggle &
+Key $MODKEY-Shift-Return # Launch a floating terminal
+        $(~/.wmii-hg/float_term)
 Key $MODKEY-d # Launch emacs
 	eval wmiir setsid "emacsclient -c" &
 # Key $MODKEY-Shift-d # Launch emacs floating

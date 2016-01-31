@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# X=$(($(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)/2-33))
+# Y=$(($(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)/2-9))
+
+eval wmiir setsid $WMII_TERM -geometry 66x18 
+wmiir xwrite /tag/sel/ctl send sel toggle 
+# wmiir xwrite /tag/sel/ctl nudge client sel right $(echo $X)px 
+# wmiir xwrite /tag/sel/ctl nudge client sel down $(echo $Y)px 
+wmiir xwrite /tag/sel/ctl nudge client sel right 40
+wmiir xwrite /tag/sel/ctl nudge client sel down 20
+echo '/./' | wmiir write /client/sel/tags
