@@ -50,6 +50,7 @@ wmiir write /rules <<!
     /:Firefox/ tags=web
     /:Emacs/ tags=emacs
     /:ncmpcpp/ tags=ncmpcpp
+    /:Transmission/ tags=torrent
 !
 
 #check on which machine you are
