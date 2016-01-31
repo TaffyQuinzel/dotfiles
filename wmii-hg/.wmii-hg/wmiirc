@@ -65,53 +65,53 @@ fi
 
 # Status Bar Info
 # mpd
-echo colors $WMII_NORMCOLORS | wmiir create /lbar/ampd
+echo colors $WMII_NORMCOLORS | wmiir create /rbar/ampd
 mpd() {
     echo -n label $(~/.wmii-hg/panel/mpd)
 }
-while mpd | wmiir write /lbar/ampd; do
+while mpd | wmiir write /rbar/ampd; do
    sleep 1
 done &
 
 # battery
-wmiir create /lbar/battery
+wmiir create /rbar/battery
 battery_colour() {
     echo colors $(~/.wmii-hg/panel/battcol)
 }
-while battery_colour | wmiir write /lbar/battery; do
+while battery_colour | wmiir write /rbar/battery; do
     sleep 0.5
-    echo colors $WMII_NORMCOLORS | wmiir write /lbar/battery
+    echo colors $WMII_NORMCOLORS | wmiir write /rbar/battery
     sleep 0.5
 done &
 battery() {
     echo -n label $(~/.wmii-hg/panel/battery)
 }
-while battery | wmiir write /lbar/battery; do
+while battery | wmiir write /rbar/battery; do
    sleep 1
 done &
 
 # wifi
-echo colors $WMII_NORMCOLORS | wmiir create /lbar/wifi
+echo colors $WMII_NORMCOLORS | wmiir create /rbar/wifi
 wifi() {
     echo -n label $(~/.wmii-hg/panel/wifi)
 }
-while wifi | wmiir write /lbar/wifi; do
+while wifi | wmiir write /rbar/wifi; do
    sleep 5
 done &
 
 # Volume
-echo colors $WMII_NORMCOLORS | wmiir create /lbar/vol
+echo colors $WMII_NORMCOLORS | wmiir create /rbar/vol
 vol() {
     echo -n label $(eval $VOLUME)
 }
-vol | wmiir write /lbar/vol
+vol | wmiir write /rbar/vol
 
 # Clock
-echo colors $WMII_NORMCOLORS | wmiir create /lbar/zclock
+echo colors $WMII_NORMCOLORS | wmiir create /rbar/zclock
 clock() {
 	echo label $(date '+%a %d %I:%M%P')
 }
-while clock | wmiir write /lbar/zclock; do
+while clock | wmiir write /rbar/zclock; do
    sleep 1
 done &
 
@@ -127,19 +127,19 @@ echo colors $WMII_NORMCOLORS | wmiir create $noticebar
 wi_events <<'!'
 # Events
 Event CreateTag
-	echo colors "$WMII_NORMCOLORS$wi_newline" label "$@" | wmiir create "/rbar/$@"
+	echo colors "$WMII_NORMCOLORS$wi_newline" label "$@" | wmiir create "/lbar/$@"
 Event DestroyTag
-	wmiir remove "/rbar/$@"
+	wmiir remove "/lbar/$@"
 Event FocusTag
-	wmiir xwrite "/rbar/$@" colors "$WMII_FOCUSCOLORS"
+	wmiir xwrite "/lbar/$@" colors "$WMII_FOCUSCOLORS"
 Event UnfocusTag
-	wmiir xwrite "/rbar/$@" colors "$WMII_NORMCOLORS"
+	wmiir xwrite "/lbar/$@" colors "$WMII_NORMCOLORS"
 Event UrgentTag
 	shift
-	wmiir xwrite "/rbar/$@" label "*$@"
+	wmiir xwrite "/lbar/$@" label "*$@"
 Event NotUrgentTag
 	shift
-	wmiir xwrite "/rbar/$@" label "$@"
+	wmiir xwrite "/lbar/$@" label "$@"
 Event LeftBarClick LeftBarDND
 	shift
 	wmiir xwrite /ctl view "$@"
@@ -171,7 +171,7 @@ Menu Client-3-Fullscreen
 Event ClientMouseDown
 	wi_fnmenu Client $2 $1 &
 
-Menu Rbar-3-Delete
+Menu Lbar-3-Delete
 	tag=$1; clients=$(wmiir read "/tag/$tag/index" | awk '/[^#]/{print $2}')
 	for c in $clients; do
 		if [ "$tag" = "$(wmiir read /client/$c/tags)" ]
@@ -181,8 +181,8 @@ Menu Rbar-3-Delete
 		[ "$tag" = "$(wi_seltag)" ] &&
 			wmiir xwrite /ctl view $(wi_tags | wi_nexttag)
 	done
-Event LeftBarMouseDown
-	wi_fnmenu Rbar "$@" &
+Event RightBarMouseDown
+	wi_fnmenu Lbar "$@" &
 
 # Actions
 Action showkeys
@@ -195,11 +195,11 @@ Action rehash
 	wi_proglist $PATH >$progsfile
 Action status
 	set +xv
-	if wmiir remove /lbar/status 2>/dev/null; then
+	if wmiir remove /rbar/status 2>/dev/null; then
 		sleep 2
 	fi
-	echo colors "$WMII_NORMCOLORS" | wmiir create /lbar/status
-	while status | wmiir write /lbar/status; do
+	echo colors "$WMII_NORMCOLORS" | wmiir create /rbar/status
+	while status | wmiir write /rbar/status; do
 		sleep 1
 	done
 
@@ -280,13 +280,13 @@ Key $MODKEY-Control-y # Toggle all other key bindings
 KeyGroup Volume actions
 Key XF86AudioMute
         amixer sset $VOL_MAIN toggle
-        vol | wmiir write /lbar/vol
+        vol | wmiir write /rbar/vol
 Key XF86AudioLowerVolume
         amixer sset $VOL_CONTROL 2-
-        vol | wmiir write /lbar/vol
+        vol | wmiir write /rbar/vol
 Key XF86AudioRaiseVolume
         amixer sset $VOL_CONTROL 2+
-        vol | wmiir write /lbar/vol
+        vol | wmiir write /rbar/vol
 
 KeyGroup Media actions
 Key XF86AudioPlay
@@ -348,7 +348,7 @@ wi_proglist $PATH >$progsfile &
 
 # Setup Tag Bar
 IFS="$wi_newline"
-wmiir rm $(wmiir ls -p /rbar) >/dev/null
+wmiir rm $(wmiir ls -p /lbar) >/dev/null
 seltag=$(wmiir read /tag/sel/ctl | sed 1q)
 unset IFS
 wi_tags | while read tag
@@ -359,7 +359,7 @@ do
 	else
 		echo colors "$WMII_NORMCOLORS"
 		echo label $tag
-	fi | wmiir create "/rbar/$tag"
+	fi | wmiir create "/lbar/$tag"
 done
 
 wi_eventloop
