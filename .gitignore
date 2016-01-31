@@ -1,21 +1,21 @@
 %*%
 
-#fish related
+# fish related
 fish_history
 fishd.*
 fish/.config/fish/plugins
 fish/.config/fish/themes
 
-#ranger related
+# ranger related
 __*__
 ranger/.config/ranger/bookmarks
 ranger/.config/ranger/history
 ranger/.config/ranger/tagged
 
-#vim tmp 
+# vim tmp 
 *~
 
-#emacs related 
+# emacs related 
 \#*#
 emacs/.emacs.d/ac-comphist.dat
 emacs/.emacs.d/autosaves
@@ -26,11 +26,11 @@ emacs/.emacs.d/tramp
 emacs/.emacs.d/url
 emacs/.emacs.d/savehist
 
-#mutt related
+# mutt related
 accountrc_*
 mutt/.mutt/cache
 mutt/.mutt/*cache
 *.gpg
 
-#ncmpcpp related
+# ncmpcpp related
 error.log
