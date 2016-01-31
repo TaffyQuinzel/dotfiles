@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# start standard programs
 declare -A progs
 progs[firefox]='firefox'
 progs[always1]='emacsclient -c'
@@ -16,3 +17,6 @@ for i in "${!progs[@]}"; do
         eval ${progs[$i]}
     fi
 done
+
+# mount wmii filesystem
+9mount -i 'unix!'/tmp/ns.$USER.$DISPLAY/wmii .mntwmii
