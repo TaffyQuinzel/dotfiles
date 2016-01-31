@@ -172,7 +172,7 @@ Menu Client-3-Fullscreen
 Event ClientMouseDown
 	wi_fnmenu Client $2 $1 &
 
-Menu LBar-3-Delete
+Menu Lbar-3-Delete
 	tag=$1; clients=$(wmiir read "/tag/$tag/index" | awk '/[^#]/{print $2}')
 	for c in $clients; do
 		if [ "$tag" = "$(wmiir read /client/$c/tags)" ]
@@ -182,8 +182,8 @@ Menu LBar-3-Delete
 		[ "$tag" = "$(wi_seltag)" ] &&
 			wmiir xwrite /ctl view $(wi_tags | wi_nexttag)
 	done
-Event LeftBarMouseDown
-	wi_fnmenu LBar "$@" &
+Event RightBarMouseDown
+	wi_fnmenu Lbar "$@" &
 
 # Actions
 Action showkeys
@@ -259,6 +259,13 @@ Key $MODKEY-y      # Open program menu
 
 Key $MODKEY-Return # Launch a terminal
 	eval wmiir setsid $WMII_TERM &
+# Key $MODKEY-Shift-Return # Launch a floating terminal
+# 	eval wmiir setsid $WMII_TERM &
+# 	wmiir xwrite /tag/sel/ctl send sel toggle &
+Key $MODKEY-d # Launch emacs
+	eval wmiir setsid "emacsclient -c" &
+# Key $MODKEY-Shift-d # Launch emacs floating
+# 	eval wmiir setsid "emacsclient -c" &
 
 KeyGroup Other
 Key $MODKEY-Control-y # Toggle all other key bindings
