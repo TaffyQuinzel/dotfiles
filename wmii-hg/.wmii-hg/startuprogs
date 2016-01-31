@@ -14,9 +14,9 @@ fi
 
 for i in "${!progs[@]}"; do
     if [ $(pgrep -cx $i) -lt 1 ] ; then
-        eval ${progs[$i]}
+        eval ${progs[$i]} &
     fi
 done
 
 # mount wmii filesystem
-9mount -i 'unix!'/tmp/ns.$USER.$DISPLAY/wmii .mntwmii
+9mount -i 'unix!'/tmp/ns.$USER.$DISPLAY/wmii .mntwmii &
