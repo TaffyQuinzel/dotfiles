@@ -1,1 +1,15 @@
-mailboxes  "+/INBOX" "+/[Gmail].Concepten" "+/[Gmail].Prullenbak" "+/[Gmail].Alle berichten" "+/[Gmail].Belangrijk" "+/[Gmail].Met ster" "+/[Gmail].Spam" "+/[Gmail].Verzonden berichten" "+/Trash" "+/Facturen" "+/Priv&AOk-" "+/Reizen" "+/Werk" 
+mailboxes  \
+"+--------- Burg LFvd ---------" \
+"+/INBOX" \
+"+/[Gmail].Concepten" \
+"+/[Gmail].Prullenbak" \
+"+/[Gmail].Alle berichten" \
+"+/[Gmail].Belangrijk" \
+"+/[Gmail].Met ster" \
+"+/[Gmail].Spam" \
+"+/[Gmail].Verzonden berichten" \
+"+/Trash" \
+"+/Facturen" \
+"+/Priv&AOk-" \
+"+/Reizen" \
+"+/Werk" 
