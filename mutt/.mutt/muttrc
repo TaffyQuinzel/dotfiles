@@ -55,6 +55,10 @@ set sidebar_width=30
 set sidebar_visible=yes
 color sidebar_new yellow default
 set sidebar_delim='|'
+set sidebar_folderindent=yes
+set sidebar_indentstr="  "
+set sidebar_shortpath=yes
+set sidebar_format="%B%?F? >%!<?%* %?N?{%N} ?%S"
 
 # bindings for sidebar
 bind index,pager <up> sidebar-prev
