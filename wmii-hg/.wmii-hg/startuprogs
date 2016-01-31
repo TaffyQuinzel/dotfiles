@@ -2,13 +2,13 @@
 
 declare -A progs
 progs[firefox]='firefox'
-progs[emacsclient]='emacsclient -c'
+progs[always1]='emacsclient -c'
 progs[mutt]='urxvtc -e mutt'
-progs[ssh-agent]='ssh-add'
-progs[urxvtc]='urxvtc'
+progs[always2]='ssh-add'
+progs[always3]='urxvtc'
 
 if [[ $(hostname) = 'satoru' ]]; then
-   progs[ncmpcpp]=('urxvtc -e ncmpcpp')
+   progs[ncmpcpp]='urxvtc -e ncmpcpp'
 fi
 
 for i in "${!progs[@]}"; do
