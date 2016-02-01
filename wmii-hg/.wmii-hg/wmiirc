@@ -41,14 +41,13 @@ wmiir write /rules <<!
     /^Pidgin:/ allow=+activate
 
     # MPlayer and VLC don't float by default, but should.
-    /MPlayer|VLC|mpv/ floating=on
+    /mpv/ floating=on
 
     # ROX puts all of its windows in the same group, so they open
     # with the same tags.  Disable grouping for ROX Filer.
     /^ROX-Filer:/ group=0
     /:mutt/ tags=mutt
     /:Firefox/ tags=web
-    # /:Emacs/ tags=emacs
     /:ncmpcpp/ tags=ncmpcpp
     /:Transmission/ tags=torrent
 !
@@ -76,19 +75,8 @@ done &
 
 # battery
 wmiir create /rbar/battery
-battery_colour() {
-    echo colors $(~/.wmii-hg/panel/battcol)
-}
-while battery_colour | wmiir write /rbar/battery; do
-    sleep 0.5
-    echo colors $WMII_NORMCOLORS | wmiir write /rbar/battery
-    sleep 0.5
-done &
-battery() {
-    echo -n label $(~/.wmii-hg/panel/battery)
-}
-while battery | wmiir write /rbar/battery; do
-   sleep 1
+while true; do
+    ~/.wmii-hg/panel/battery
 done &
 
 # wifi

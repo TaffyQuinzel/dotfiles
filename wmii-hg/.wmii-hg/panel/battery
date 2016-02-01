@@ -1,14 +1,29 @@
 #!/bin/bash
 BAT=`acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g'`
 STATUS=`acpi -b | awk '{gsub(/,/,""); print $3}'`
-
+clr=$WMII_NORMCOLORS
+lbl=">^_^<"
 
 if [[ $STATUS = "Discharging" ]]; then
-    echo "$BAT% --"
+    lbl="$BAT% --"
+    if [[ $BAT -lt 20 ]]; then
+        echo colors $clr | wmiir write /rbar/battery
+        sleep 0.5
+        clr="#1c1c1c #ff005b #666666"
+    elif [[ $BAT -lt 40 ]]; then
+        clr="#1c1c1c #ff9f00 #666666"
+    fi
 elif [[ $STATUS = "Charging" ]]; then
-    echo "$BAT% ++"
+    lbl="$BAT% ++"
+    if [[ $BAT -lt 20 ]]; then
+        clr="#1c1c1c #ff0000 #666666"
+    elif [[ $BAT -lt 40 ]]; then
+        clr="#1c1c1c #ff9f00 #666666"
+    fi
 elif [[ $STATUS = "Full" ]]; then
-    echo "=^.^="
-else
-    echo ">*_*<"
+    lbl="=^.^="
 fi
+
+echo colors $clr | wmiir write /rbar/battery
+echo -n label $lbl | wmiir write /rbar/battery
+sleep 0.5
