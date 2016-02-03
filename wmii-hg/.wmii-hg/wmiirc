@@ -53,7 +53,7 @@ wmiir write /rules <<!
 !
 
 #check on which machine you are
-if [ -d /sys/class/power_supply/BAT0 ]; then
+if [[ hostname = "satomi" ]]; then
     VOLUME="~/.wmii-hg/panel/volume2"
     VOL_MAIN=Master
     VOL_CONTROL=Master
