@@ -2,7 +2,7 @@
 clr=$WMII_NORMCOLORS
 lbl=">^_^<"
 
-if [[ hostname = "satomi" ]]; then
+if [[ $(hostname) == "satomi" ]]; then
     BAT=`acpi -b | awk '{gsub(/%,/,""); print $4}' | sed 's/%//g'`
     STATUS=`acpi -b | awk '{gsub(/,/,""); print $3}'`
 
