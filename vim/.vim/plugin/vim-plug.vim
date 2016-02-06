@@ -25,7 +25,9 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'Shougo/neocomplete.vim'
 Plug 'scrooloose/nerdcommenter'
-Plug 'vim-airline/vim-airline', { 'for': '*'}
+Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/syntastic'
 
 call plug#end()
+
+call plug#load('vim-airline')
