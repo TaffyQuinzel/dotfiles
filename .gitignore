@@ -12,10 +12,11 @@ ranger/.config/ranger/bookmarks
 ranger/.config/ranger/history
 ranger/.config/ranger/tagged
 
-# vim tmp 
+# vim tmp
 *~
+vim/.vim/plugged/*
 
-# emacs related 
+# emacs related
 \#*#
 emacs/.emacs.d/ac-comphist.dat
 emacs/.emacs.d/autosaves
