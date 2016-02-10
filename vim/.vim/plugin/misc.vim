@@ -14,3 +14,12 @@ set ffs=unix,dos,mac
 
 " Enable use of the mouse for all modes
 set mouse=a
+
+"make sure plugins can read filetypes
+filetype plugin on
+
+" set up tabs properly
+
+" set up scrolling better
+set scrolloff=7
+
