@@ -24,10 +24,15 @@ call plug#begin('~/.vim/plugged')
 " Plug '~/my-prototype-plugin'
 
 Plug 'Shougo/neocomplete.vim'
-Plug 'scrooloose/nerdcommenter', { 'on': 'NERDCom*' }
-Plug 'vim-airline/vim-airline'
+Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
+Plug 'itchyny/lightline.vim'
+Plug 'ajh17/VimCompletesMe'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-fugitive'
+Plug 'osyo-manga/vim-over'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
-call plug#load('vim-airline')
+call plug#load('vim-surround','VimCompletesMe','vim-over','vim-git','vim-fugitive','lightline.vim','nerdcommenter')
