@@ -23,3 +23,5 @@ filetype plugin on
 " set up scrolling better
 set scrolloff=7
 
+" make commands case insensitive
+set wildignorecase
