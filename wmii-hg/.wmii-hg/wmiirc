@@ -1,4 +1,4 @@
-#!/bin/dash -f
+#!/bin/bash -f
 # Configure wmii
 wmiiscript=wmiirc # For wmii.sh
 . wmii.sh
@@ -50,6 +50,7 @@ wmiir write /rules <<!
     /:Firefox/ tags=web
     /:ncmpcpp/ tags=ncmpcpp
     /:Transmission/ tags=torrent
+    /:Eclipse/ tags=eclipse
 !
 
 #check on which machine you are
