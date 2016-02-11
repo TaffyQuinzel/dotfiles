@@ -15,7 +15,7 @@ set ffs=unix,dos,mac
 " Enable use of the mouse for all modes
 set mouse=a
 
-"make sure plugins can read filetypes
+" make sure plugins can read filetypes
 filetype plugin on
 
 " set up tabs properly
@@ -28,3 +28,6 @@ set scrolloff=7
 
 " make commands case insensitive
 set wildignorecase
+
+" disable auto comment insertion
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
