@@ -19,15 +19,24 @@ set mouse=a
 filetype indent plugin on
 
 " set up tabs properly
+" set size of tabs
 set tabstop=3
 set shiftwidth=3
+" insert space instead of tab
 set expandtab
 
 " set up scrolling better
 set scrolloff=7
 
 " make commands case insensitive
+" for filenames
 set wildignorecase
+" for commands
+set ignorecase
+" fix for search(replace)
+set smartcase
+" fix for auto complete in insert mode
+set infercase
 
 " use autoindent
 set autoindent
