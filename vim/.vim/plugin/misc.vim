@@ -19,6 +19,9 @@ set mouse=a
 filetype plugin on
 
 " set up tabs properly
+set tabstop=3
+set shiftwidth=3
+set expandtab
 
 " set up scrolling better
 set scrolloff=7
