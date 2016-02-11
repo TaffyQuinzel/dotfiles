@@ -34,3 +34,6 @@ set autoindent
 
 " disable auto comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" automatically reread changed file
+set autoread
