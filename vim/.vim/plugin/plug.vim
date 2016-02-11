@@ -32,7 +32,9 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'osyo-manga/vim-over'
 Plug 'tpope/vim-surround'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-repeat'
 
 call plug#end()
 
-call plug#load('vim-surround','VimCompletesMe','vim-over','vim-git','vim-fugitive','lightline.vim','nerdcommenter')
+call plug#load('vim-repeat','vim-surround','VimCompletesMe','vim-over','vim-gitgutter','vim-git','vim-fugitive','lightline.vim','nerdcommenter')
