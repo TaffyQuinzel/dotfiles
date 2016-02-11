@@ -13,12 +13,12 @@ if [[ $(hostname) == "satomi" ]]; then
             echo colors $clr | wmiir write /rbar/battery
             clr="#1c1c1c #ff005b #666666"
         elif [[ $BAT -lt 40 ]]; then
-            clr="#1c1c1c #ff005b #666666"
+            clr="#1c1c1c #ff9f00 #666666"
         fi
     elif [[ $STATUS = "Charging" ]]; then
         lbl="$BAT% ++"
         if [[ $BAT -lt 20 ]]; then
-            clr="#1c1c1c #ff0000 #666666"
+            clr="#1c1c1c #ff005b #666666"
         elif [[ $BAT -lt 40 ]]; then
             clr="#1c1c1c #ff9f00 #666666"
         fi
