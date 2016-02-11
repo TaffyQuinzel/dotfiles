@@ -16,7 +16,7 @@ set ffs=unix,dos,mac
 set mouse=a
 
 " make sure plugins can read filetypes
-filetype plugin on
+filetype indent plugin on
 
 " set up tabs properly
 set tabstop=3
@@ -28,6 +28,9 @@ set scrolloff=7
 
 " make commands case insensitive
 set wildignorecase
+
+" use autoindent
+set autoindent
 
 " disable auto comment insertion
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
