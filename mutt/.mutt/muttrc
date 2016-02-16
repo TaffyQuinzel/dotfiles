@@ -1,6 +1,11 @@
 set editor="vim"
 set my_name="Louis van der Burg"
 
+# alias stuff
+set alias_file=~/.mutt/aliases
+set sort_alias=alias
+source $alias_file
+
 # use gpg for passwords
 source "gpg2 -dq $HOME/.mutt/my-pwds.gpg |"
 
