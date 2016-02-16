@@ -34,6 +34,7 @@ Plug 'osyo-manga/vim-over'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-repeat'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
