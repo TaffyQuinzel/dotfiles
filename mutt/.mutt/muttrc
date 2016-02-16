@@ -1,4 +1,4 @@
-set editor="emacs %s"
+set editor="vim"
 set my_name="Louis van der Burg"
 
 # use gpg for passwords
@@ -26,7 +26,7 @@ set menu_scroll         = yes   # scroll in menus
 set tilde               = yes   # show tildes like in vim
 set markers             = no 	# no ugly plus signs
 
-# set sorting correctly 
+# set sorting correctly
 set sort_aux=reverse-last-date-received
 set sort_browser=reverse-date
 set sort=threads
