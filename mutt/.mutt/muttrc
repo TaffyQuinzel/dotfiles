@@ -9,8 +9,6 @@ folder-hook 'taffyQuinzel' 'source ~/.mutt/accounts/taffyQuinzel'
 folder-hook 'burglfvd' 'source ~/.mutt/accounts/burglfvd'
 
 #main mail folder
-# set folder=~/.mail/
-# source ~/.mutt/mailboxes2
 source ~/.mutt/accounts/louisBurg
 
 macro index <F1> '<sync-mailbox><enter-command>source ~/.mutt/accounts/louisBurg<enter><change-folder>!<enter>'
