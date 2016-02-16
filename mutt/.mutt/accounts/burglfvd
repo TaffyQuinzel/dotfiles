@@ -1,3 +1,4 @@
+# vim: filetype=muttrc
 color status blue yellow
 #SMTP
 unset smtp_authenticators
