@@ -24,7 +24,7 @@ endfunction
 function! LightLineFugitive()
   if exists("*fugitive#head")
     let _ = fugitive#head()
-    return strlen(_) ? (winwidth(0) > 70 ? ''._ : '') : ''
+    return strlen(_) ? (winwidth(0) > 70 ? ' '._ : '') : ''
   endif
   return ''
 endfunction
