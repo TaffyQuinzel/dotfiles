@@ -37,6 +37,7 @@ Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
 Plug 'taffyquinzel/vim-MetaCasanova', { 'for': 'mc' }
 Plug 'dag/vim-fish', { 'for': 'fish' }
+Plug 'kovisoft/slimv', { 'for': 'lisp' }
 
 call plug#end()
 
