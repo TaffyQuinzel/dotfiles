@@ -35,7 +35,9 @@ Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
+Plug 'taffyquinzel/vim-MetaCasanova', { 'for': 'mc' }
+Plug 'dag/vim-fish', { 'for': 'fish' }
 
 call plug#end()
 
-call plug#load('vim-repeat','vim-surround','VimCompletesMe','vim-over','vim-gitgutter','vim-git','vim-fugitive','lightline.vim','nerdcommenter')
+call plug#load('vim-easymotion','vim-repeat','vim-surround','VimCompletesMe','vim-over','vim-gitgutter','vim-git','vim-fugitive','lightline.vim','nerdcommenter')
