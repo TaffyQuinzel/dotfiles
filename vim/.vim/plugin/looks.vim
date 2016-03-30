@@ -1,5 +1,8 @@
 " set colors to 16 so vim uses Xresource colours
 set t_Co=16
+" let base16colorspace=256  " Access colors present in 256 colorspace
+" set background=dark
+" colorscheme soleo
 
 " Height of the command bar
 set cmdheight=2
@@ -12,9 +15,13 @@ set wildignore=*.aux,*.o,*~,*.pyc
 " Always show current position
 set ruler
 
-" enable line numbers & bar
+" enable line numbers
 set number
+
+" enable cursor bar & column highlighter
+set cursorcolumn
 set cursorline
+hi CursorLine term=bold cterm=bold ctermbg=darkgrey
 
 " cursor settings
 if &term =~ "xterm\\|rxvt"
