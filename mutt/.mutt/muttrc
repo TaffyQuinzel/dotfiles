@@ -20,6 +20,7 @@ macro index <F1> '<sync-mailbox><enter-command>source ~/.mutt/accounts/louisBurg
 macro index <F2> '<sync-mailbox><enter-command>source ~/.mutt/accounts/taffyQuinzel<enter><change-folder>!<enter>'
 macro index <F3> '<sync-mailbox><enter-command>source ~/.mutt/accounts/burglfvd<enter><change-folder>!<enter>'
 
+set copy=no
 
 # Set up preview pane for messages
 set pager_index_lines 	= 10 	# number of index lines to show
