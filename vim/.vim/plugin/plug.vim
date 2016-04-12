@@ -38,7 +38,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'taffyquinzel/vim-MetaCasanova', { 'for': 'mc' }
 Plug 'dag/vim-fish', { 'for': 'fish' }
 Plug 'kovisoft/slimv', { 'for': 'lisp' }
+Plug 'luochen1990/rainbow'
 
 call plug#end()
 
-call plug#load('vim-easymotion','vim-repeat','vim-surround','VimCompletesMe','vim-over','vim-gitgutter','vim-git','vim-fugitive','lightline.vim','nerdcommenter')
+call plug#load('vim-easymotion','vim-repeat','vim-surround','VimCompletesMe','vim-over','vim-gitgutter','vim-git','vim-fugitive','lightline.vim','nerdcommenter','rainbow')
