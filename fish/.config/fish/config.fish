@@ -9,7 +9,7 @@ if status --is-login
     set -xg XDG_CACHE_HOME $HOME/.cache
     set -xg _ /usr/bin/printenv
     set -xg EDITOR vim
-    set -xg VISUAL urxvtc -e vim
+    set -xg VISUAL 'urxvtc -e vim'
     set -xg BROWSER firefox
     set -xg JAVA_HOME /usr/lib/jvm/java-7-openjdk/jre
     set -xg CATALINA_HOME /opt/tomcat
