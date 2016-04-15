@@ -23,10 +23,8 @@ set --erase fish_greeting
 #global
 alias please='sudo'
 alias update='~/scripts/update-system'
-alias svim='sudo vim'
 alias logout='exit'
 alias umount='sudo umount'
-alias emacs='emacsclient -c'
 alias startx='ssh-agent startx'
 #system specific
 if [ (hostname) = "genetic" ]
