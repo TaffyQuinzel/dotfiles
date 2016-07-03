@@ -3,14 +3,9 @@
 # start standard programs
 declare -A progs
 progs[firefox]='firefox'
-progs[always1]='emacsclient -c'
-progs[mutt]='urxvtc -e mutt'
+#progs[mutt]='urxvtc -e mutt'
 progs[always2]='ssh-add'
 progs[always3]='urxvtc'
-
-if [[ $(hostname) = 'satoru' ]]; then
-   progs[ncmpcpp]='urxvtc -e ncmpcpp'
-fi
 
 for i in "${!progs[@]}"; do
     if [ $(pgrep -cx $i) -lt 1 ] ; then
@@ -19,4 +14,4 @@ for i in "${!progs[@]}"; do
 done
 
 # mount wmii filesystem
-9mount -i 'unix!'/tmp/ns.$USER.$DISPLAY/wmii .mntwmii &
+#9mount -i 'unix!'/tmp/ns.$USER.$DISPLAY/wmii .mntwmii &
