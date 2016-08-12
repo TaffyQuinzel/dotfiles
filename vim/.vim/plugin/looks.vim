@@ -22,6 +22,7 @@ set number
 set cursorcolumn
 set cursorline
 hi CursorLine term=bold cterm=bold ctermbg=darkgrey
+hi CursorColumn term=bold cterm=bold ctermbg=darkgrey
 
 " cursor settings
 if &term =~ "xterm\\|rxvt"
