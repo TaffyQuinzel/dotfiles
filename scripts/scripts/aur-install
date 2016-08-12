@@ -1,8 +1,0 @@
-#!/bin/bash
-DIR="$HOME/aurbuilds/"
-
-for i in "$@"
-do
-    cower -dd $i
-    (cd $DIR$i && makepkg -si && rm -Rf $DIR$i)
-done
