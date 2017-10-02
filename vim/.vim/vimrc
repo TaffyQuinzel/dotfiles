@@ -1,0 +1,386 @@
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdcommenter'
+Plug 'itchyny/lightline.vim'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-fugitive'
+Plug 'osyo-manga/vim-over'
+Plug 'tpope/vim-surround'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-repeat'
+Plug 'easymotion/vim-easymotion'
+Plug 'taffyquinzel/vim-MetaCasanova', { 'for': 'mc' }
+Plug 'dag/vim-fish', { 'for': 'fish' }
+Plug 'kovisoft/slimv', { 'for': 'lisp' }
+Plug 'luochen1990/rainbow'
+Plug 'chrisbra/histwin.vim'
+Plug 'rhysd/vim-clang-format', { 'for': 'c,cpp,objc' }
+Plug 'woju/vim-colors-woju'
+" Plug 'justmao945/vim-clang', { 'for': 'c,cpp,objc' }
+
+" TODO
+" Plug 'vim-syntastic/syntastic'
+" Plug 'Valloric/YouCompleteMe'
+
+" colorschemes
+" Plug 'jacoborus/tender.vim'
+" Plug 'junegunn/seoul256.vim'
+" Plug 'sonph/onehalf', {'rtp': 'vim/'}
+
+call plug#end()
+
+" call plug#load(
+         " \ 'vim-easymotion',
+         " \ 'vim-repeat',
+         " \ 'vim-surround',
+         " \ 'vim-over',
+         " \ 'lightline.vim',
+         " \ 'nerdcommenter',
+         " \ 'rainbow',
+         " \ 'histwin.vim',
+         " \ )
+         " \ 'vim-fugitive',
+         " \ 'vim-git',
+         " \ 'vim-gitgutter',
+
+" {{{
+"     lightline
+set laststatus=2
+
+let g:lightline = {
+      \ 'inactive': {
+      \   'left': [ [ 'filename', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ] ]
+      \ },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'fugitive': 'LightLineFugitive',
+      \   'readonly': 'LightLineReadonly',
+      \   'fileformat': 'LightLineFileformat',
+      \   'filetype': 'LightLineFiletype',
+      \   'fileencoding': 'LightLineFileencoding',
+      \   'mode': 'LightLineMode',
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
+      \ }
+
+function! LightLineReadonly()
+  return &ft !~? 'help' && &readonly ? '' : ''
+endfunction
+
+function! LightLineFugitive()
+  if exists("*fugitive#head")
+    let _ = fugitive#head()
+    return strlen(_) ? (winwidth(0) > 70 ? ' '._ : '') : ''
+  endif
+  return ''
+endfunction
+
+function! LightLineFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! LightLineFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! LightLineFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! LightLineMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+" }}}
+
+
+" {{{
+"     completesme
+let b:vcm_tab_complete = "vim"
+
+" let enter insert the value
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" select first instead of last
+let g:vcm_direction = 'p'
+" }}}
+
+
+" {{{
+"     easymotion
+" easymotion binding
+map  <BS> <Plug>(easymotion-bd-f)
+nmap <BS> <Plug>(easymotion-overwin-f)
+
+" keys to use
+let g:EasyMotion_keys = "oeidtn',.pyfgcrl;qjkxbmwvzuhas"
+" }}}
+
+
+" {{{
+"     looks
+" set colors to 16 so vim uses Xresource colours
+set t_Co=16
+" set t_Co=256
+" let base16colorspace=256  " Access colors present in 256 colorspace
+" set background=dark
+" colorscheme soleo
+
+" Height of the command bar
+set cmdheight=2
+
+" Turn on the WiLd menu
+set wildmenu
+" Ignore compiled files
+set wildignore=*.aux,*.o,*~,*.pyc
+
+" Always show current position
+set ruler
+
+" enable line numbers
+set number
+
+" enable cursor bar & column highlighter
+set cursorcolumn
+set cursorline
+hi CursorLine term=bold cterm=bold ctermbg=darkgrey
+
+" cursor settings
+if &term =~ "xterm\\|rxvt"
+   " use an red cursor in insert mode
+   let &t_SI = "\<Esc>]12;#dc322f\x7"
+   " use a grey cursor otherwise
+   let &t_EI = "\<Esc>]12;#93a1a1\x7"
+endif
+
+" theme
+" if (has("termguicolors"))
+   " set termguicolors
+" endif
+
+" colorscheme onehalfdark
+
+" folding
+" set foldnestmax=1 " use zC instead of zc, this makes things inside functions also more clear
+set foldmethod=indent
+
+
+" gui stuff
+" set font permanently
+" set guifont=Source_Code_Pro_Medium:h9:cANSI:qDRAFT
+" remove menubar
+" set guioptions -=m
+" remove toolbar
+" set guioptions -=T
+" remove scrollbar
+" set guioptions -=r
+" }}}
+
+
+" {{{
+"     misc
+" cleanup whitespace automatically
+function! StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd BufWritePre * :call StripTrailingWhitespaces()
+
+" Set utf8 as standard encoding and en_US as the standard language
+set encoding=utf8
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
+
+" Enable use of the mouse for all modes
+set mouse=a
+
+" make sure plugins can read filetypes
+filetype indent plugin on
+
+" set up tabs properly
+" set size of tabs
+set tabstop=3
+set shiftwidth=3
+" insert space instead of tab
+set expandtab
+
+" set up scrolling better
+set scrolloff=7
+
+" make commands case insensitive
+" for filenames
+set wildignorecase
+" for commands
+set ignorecase
+" fix for search(replace)
+set smartcase
+" fix for auto complete in insert mode
+set infercase
+
+" use autoindent
+set autoindent
+
+" disable auto comment insertion
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" automatically reread changed file
+set autoread
+
+" highlight all searched items
+set hlsearch
+" }}}
+
+
+" {{{
+"     neocomplete
+" Use neocomplete.
+" " let g:neocomplete#enable_at_startup = 1
+
+" " neocomplete keybindings
+" " <CR>: close popup and save indent.
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function()
+   " return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+   " " For no inserting <CR> key.
+   " "return pumvisible() ? "\<C-y>" : "\<CR>"
+" endfunction
+" " <TAB>: completion.
+" inoremap <silent><expr> <TAB>
+         " \ pumvisible() ? "\<C-n>" :
+         " \ <SID>check_back_space() ? "\<TAB>" :
+         " \ neocomplete#start_manual_complete()
+" function! s:check_back_space() abort "{{{
+   " let col = col('.') - 1
+   " return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction"}}}
+" " <C-h>, <BS>: close popup and delete backword char.
+" inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" " Close popup by <Space>.
+" "inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+
+" " neosnippet keybindings
+" imap <Space> <PLUG>(neosnippet_expand_or_jump)
+" " smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+         " " \ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+" }}}
+
+
+" {{{
+"     nerdcommenter
+let NERDSpaceDelims=1
+" }}}
+
+
+" {{{
+"     remappings
+" save file with sudo permissions
+cmap w!! %w !sudo tee %
+
+" don't use shift as much
+nnoremap ; :
+nnoremap : ;
+vnoremap ; :
+vnoremap : ;
+
+" leader is <Space> and 'comma' not \ (because mapleader is not working)
+map , <leader>
+map <Space> <leader>
+
+" tab navigation
+nnoremap <F2> :tabprevious<CR>
+nnoremap <F3> :tabnext<CR>
+" }}}
+
+
+" {{{
+"     tmpfiles
+
+" tell it to use an undo file
+set undofile
+" set a directory to store the undo history
+set undodir=~/.vim/undo/
+
+" put backupfiles in one place
+set backupdir=~/.vim/backup/
+
+" put swapfiles in one place
+set directory=~/.vim/swp/
+
+" Keep viminfo file under ~/.vim instead of home.
+set viminfo+=n~/.vim/viminfo
+
+" }}}
+
+
+" {{{
+"     clang-format
+autocmd FileType c,cpp,objc ClangFormatAutoEnable
+let g:clang_format#style_options = {
+         \ "AccessModifierOffset" : 3,
+         \ "AlignAfterOpenBracket" : "true",
+         \ "AlignConsecutiveAssignments" : "true",
+         \ "AlignEscapedNewlinesLeft" : "true",
+         \ "AlignOperands" : "true",
+         \ "AlignTrailingComments" : "true",
+         \ "AllowAllParametersOfDeclarationOnNextLine" : "true",
+         \ "AllowShortBlocksOnASingleLine" : "true",
+         \ "AllowShortCaseLabelsOnASingleLine" : "true",
+         \ "AllowShortIfStatementsOnASingleLine" : "true",
+         \ "AllowShortLoopsOnASingleLine" : "true",
+         \ "AlwaysBreakBeforeMultilineStrings" : "false",
+         \ "BinPackArguments" : "true",
+         \ "BinPackParameters" : "true",
+         \ "BreakBeforeBinaryOperators" : "All ",
+         \ "BreakBeforeBraces" : "Attach",
+         \ "BreakBeforeTernaryOperators" : "false",
+         \ "ColumnLimit" : 0,
+         \ "ConstructorInitializerAllOnOneLineOrOnePerLine" : "false",
+         \ "ConstructorInitializerIndentWidth" : 3,
+         \ "ContinuationIndentWidth" : 3,
+         \ "Cpp11BracedListStyle" : "true",
+         \ "DerivePointerAlignment" : "false",
+         \ "DisableFormat" : "false",
+         \ "IndentCaseLabels" : "true",
+         \ "IndentWidth" : 3,
+         \ "IndentWrappedFunctionNames" : "false",
+         \ "KeepEmptyLinesAtTheStartOfBlocks" : "true",
+         \ "Language" : "Cpp",
+         \ "MaxEmptyLinesToKeep" : 2,
+         \ "NamespaceIndentation" : "Inner",
+         \ "PointerAlignment" : "Right",
+         \ "SpaceAfterCStyleCast" : "false",
+         \ "SpaceBeforeAssignmentOperators" : "true",
+         \ "SpaceBeforeParens" : "ControlStatements",
+         \ "SpaceInEmptyParentheses" : "false",
+         \ "SpacesBeforeTrailingComments" : 2,
+         \ "SpacesInAngles" : "false",
+         \ "SpacesInCStyleCastParentheses" : "false",
+         \ "SpacesInContainerLiterals" : "false",
+         \ "SpacesInParentheses" : "false",
+         \ "SpacesInSquareBrackets" : "false",
+         \ "Standard" : "Cpp03",
+         \ "TabWidth" : 3,
+         \ "UseTab" : "Never"
+         \ }
+" }}}
+
+
+" {{{
+"     vim-clang
+
+" " set correct library path
+" let g:clang_cpp_options = '-L/C/Program\ Files/Embarcadero/RAD\ Studio/7.0/include/vcl/'
+
+" " disable using systemheaders
+" let g:clang_include_sysheaders = 0
+
+" }}}
