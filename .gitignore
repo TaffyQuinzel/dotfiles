@@ -16,17 +16,6 @@ ranger/.config/ranger/tagged
 *~
 vim/.vim/plugged/*
 
-# emacs related
-\#*#
-emacs/.emacs.d/ac-comphist.dat
-emacs/.emacs.d/autosaves
-emacs/.emacs.d/auto-save-list
-emacs/.emacs.d/backups
-emacs/.emacs.d/elpa/archives
-emacs/.emacs.d/tramp
-emacs/.emacs.d/url
-emacs/.emacs.d/savehist
-
 # mutt related
 accountrc_*
 mutt/.mutt/cache

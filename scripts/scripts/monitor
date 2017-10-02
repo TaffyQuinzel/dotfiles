@@ -9,6 +9,7 @@ DOCKTWO=$(xrandr | grep "HDMI3 connected" &> /dev/null && echo 1 || echo 0)
 VGA=$(xrandr | grep "VGA1 connected" &> /dev/null && echo 1 || echo 0)
 
 function xinitCall(){
+<<<<<<< HEAD
    if [ $INTERNAL -eq 1 ]; then
       if [ $DOCKONE -eq 1 ] && [ $DOCKTWO -eq 1 ]; then
          xrandr --output HDMI3 --auto --primary --output HDMI2 --auto --right-of HDMI3
@@ -18,6 +19,22 @@ function xinitCall(){
 
 function vgaCall(){
    xrandr --output eDP1 --auto --primary --output VGA1 --auto --right-of eDP1
+=======
+if [ $INTERNAL -eq 1 ]; then
+   if [ $DOCKONE -eq 1 ] && [ $DOCKTWO -eq 1 ]; then
+      # xrandr --output HDMI3 --auto --primary --output HDMI2 --auto --right-of HDMI3 --output eDP1 --off
+      xrandr --output eDP1 --off
+      xrandr --output HDMI3 --auto --primary --output HDMI2 --auto --right-of HDMI3
+   else
+      xrandr --output HDMI3 --off --output HDMI2 --off
+      xrandr --output eDP1 --auto
+   fi
+fi
+}
+
+function vgaCall(){
+xrandr --output eDP1 --auto --primary --output VGA1 --auto --right-of eDP1
+>>>>>>> 3f0127c61458fb1445297c1a16e5a76dc31de1f8
 }
 
 if [ -n "$ARG" ]; then
